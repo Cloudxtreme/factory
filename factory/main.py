@@ -24,7 +24,7 @@ def cmd_ls(factory, args):
 
 
 def cmd_up(factory, args):
-    factory.up(args.file, detached=args.detached)
+    factory.up(args.file)
 
 
 def cmd_stop(factory, args):

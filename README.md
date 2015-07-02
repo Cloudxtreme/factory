@@ -19,8 +19,8 @@ Configuration
 -------------
 
     machines:
-        dev:
-          driver=virtualbox
+      dev:
+        driver=virtualbox
 
 Other Commands
 --------------
