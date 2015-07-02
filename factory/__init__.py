@@ -1,8 +1,3 @@
-# Package:  factory
-# Date:     25th May 2015
-# Author:   James Mills, prologic at shortcircuit dot net dot au
-
-
 """factory - Tool for creating and managing Docker Machines
 
 factory is a Tool for creating and managing Docker Machines

@@ -1,7 +1,3 @@
-# Package:  version
-# Date:     25th May 2015
-# Author:   James Mills, prologic at shortcircuit dot net dot au
-
 """Version Module
 
 So we only have to maintain version information in one place!

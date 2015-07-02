@@ -1,11 +1,3 @@
-# Module:   utils
-# Date:     25th May 2015
-# Author:   James Mills, prologic at shortcircuit dot net dot au
-
-
-"""Utilities"""
-
-
 from time import sleep
 from socket import AF_INET, SOCK_STREAM, socket
 
