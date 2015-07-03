@@ -35,6 +35,14 @@ def cmd_rm(factory, args):
     factory.rm(args.machines)
 
 
+def cmd_env(factory, args):
+    factory.env(args.machine)
+
+
+def cmd_ip(factory, args):
+    factory.ip(args.machine)
+
+
 def parse_args():
     parser = ArgumentParser(
         description=__doc__,
@@ -94,6 +102,30 @@ def parse_args():
     rm_parser.add_argument(
         "machines", nargs="*",
         help="Machine to stop (optional)"
+    )
+
+    # env
+    env_parser = subparsers.add_parser(
+        "env",
+        help="Display Docker configuration for a machine"
+    )
+    env_parser.set_defaults(func=cmd_env)
+
+    env_parser.add_argument(
+        "machine", type=str,
+        help="Machine to get configuration"
+    )
+
+    # ip
+    ip_parser = subparsers.add_parser(
+        "ip",
+        help="Display the IP Address of a machine"
+    )
+    ip_parser.set_defaults(func=cmd_ip)
+
+    ip_parser.add_argument(
+        "machine", type=str,
+        help="Machine to get address of"
     )
 
     return parser.parse_args()

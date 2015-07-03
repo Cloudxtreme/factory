@@ -2,6 +2,7 @@ from __future__ import print_function
 
 
 from sh import docker_machine
+from progress.spinner import Spinner
 
 
 class Factory(object):
@@ -14,9 +15,11 @@ class Factory(object):
 
     def up(self, file, detached=False):
         for name, config in self.config.machines.items():
-            print("Creating machine: {}".format(name))
             config = {k: (v is None and True) or v for k, v in config.items()}
-            docker_machine.create(name, **config)
+            progress = Spinner("Creating machine {}: ".format(name))
+            for _ in docker_machine.create(name, _iter_noblock=True, **config):
+                progress.next()
+            progress.finish()
 
     def stop(self, machines):
         machines = machines or self.config.machines
@@ -29,3 +32,9 @@ class Factory(object):
         for machine in machines:
             print("Removing machine: {}".format(machine))
             docker_machine.rm(machine)
+
+    def env(self, machine):
+        print(docker_machine.env(machine).strip())
+
+    def ip(self, machine):
+        print(docker_machine.ip(machine).strip())
