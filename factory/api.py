@@ -15,7 +15,7 @@ class Factory(object):
     def up(self, file, detached=False):
         for name, config in self.config.machines.items():
             print("Creating machine: {}".format(name))
-            print(config)
+            config = {k: (v is None and True) or v for k, v in config.items()}
             docker_machine.create(name, **config)
 
     def stop(self, machines):

@@ -24,11 +24,46 @@ Usage
 Configuration
 -------------
 
+Simple local virtualbox:
+
 ::
     
     machines:
       dev:
         driver=virtualbox
+
+Simple digitalocean:
+
+::
+    
+    $ export DIGITALOCEAN_ACCESS_TOKEN==...
+
+::
+    
+    machines:
+      dev:
+        driver=digitalocean
+
+A digitalocean swarm cluster:
+
+::
+    
+    $ export DIGITALOCEAN_ACCESS_TOKEN==...
+
+::
+
+    machines:
+
+      node1:
+        driver: digitalocean
+        swarm:
+        swarm-master:
+        swarm-discovery: token://...
+
+      node2:
+        driver: digitalocean
+        swarm:
+        swarm-discovery: token://...
 
 Other Commands
 --------------
