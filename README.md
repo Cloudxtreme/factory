@@ -5,6 +5,8 @@ factory is a Tool to create and manage Docker Machines.
 
 factory is MIT licensed.
 
+[![image](https://asciinema.org/a/23ujlplez9yyulmqojinw9ei4.png)](https://asciinema.org/a/23ujlplez9yyulmqojinw9ei4)
+
 Quick Start
 -----------
 
