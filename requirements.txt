@@ -1,4 +1,5 @@
 sh
 PyYAML
 pathlib
+attrdict
 progress
