@@ -1,10 +1,15 @@
-from time import sleep
-from socket import AF_INET, SOCK_STREAM, socket
+"""Utilities"""
 
 
-def waitfor(address, port, timeout=10):
-    sock = socket(AF_INET, SOCK_STREAM)
-    counter = timeout
-    while not sock.connect_ex((address, port)) == 0 and counter:
-        sleep(1)
-        counter -= 1
+from yaml import load
+
+
+def include(source):
+    return load(open(source, "r"))
+
+
+def process(config):
+    for k, v in config.items():
+        if k == "$include":
+            config[k] = include(v)
+    return config

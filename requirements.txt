@@ -1,5 +1,7 @@
 sh
 PyYAML
 pathlib
-attrdict
-progress
+
+# domains
+# Development version of domains
+-e git+https://github.com/prologic/domains.git#egg=domains

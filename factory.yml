@@ -1,3 +1,11 @@
 machines:
   test:
     driver: digitalocean
+
+domains:
+  myrandomdomain.com:
+    driver: digitalocean
+    records:
+      - type: "A"
+        name: "@"
+        data: "{{ machines.test.ip }}"

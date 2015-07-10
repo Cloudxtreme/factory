@@ -6,13 +6,14 @@
 
 from __future__ import print_function
 
+import os
+import sys
 from os import environ
 from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 
 
 from yaml import load
 from pathlib import Path
-from attrdict import AttrDict
 
 
 from .api import Factory
@@ -24,7 +25,7 @@ def cmd_ls(factory, args):
 
 
 def cmd_up(factory, args):
-    factory.up(args.file)
+    factory.up()
 
 
 def cmd_stop(factory, args):
@@ -89,7 +90,7 @@ def parse_args():
 
     stop_parser.add_argument(
         "machines", nargs="*",
-        help="Machine to stop (optional)"
+        help="Machines to stop (optional)"
     )
 
     # rm
@@ -132,9 +133,12 @@ def parse_args():
 
 
 def main():
+    sys.stdout = os.fdopen(sys.stdout.fileno(), "w", 0)
+
     args = parse_args()
 
-    config = AttrDict(load(Path(args.file).resolve().open("r")))
+    config = load(Path(args.file).resolve().open("r"))
+
     factory = Factory(config)
 
     args.func(factory, args)
